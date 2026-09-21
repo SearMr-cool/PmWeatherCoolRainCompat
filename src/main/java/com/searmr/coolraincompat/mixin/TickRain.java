@@ -59,11 +59,12 @@ public class TickRain {
             if(playAt != null && PMWeather.RANDOM.nextInt(3) < this.rainSoundTimer++){
                 this.rainSoundTimer = 0;
                 if(precip != ThermodynamicEngine.Precipitation.SNOW){
-                    handleCustomRainSound(camera, playAt, playAt.getY() > blockPos.getY() + 1 && level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, blockPos).getY() > Mth.floor((float) blockPos.getY()));
+                    handleCustomRainSound(camera, playAt, playAt.getY() > camera.getBlockPosition().getY() + 1
+                            && level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING, camera.getBlockPosition()).getY() > camera.getBlockPosition().getY());
+                }
                 }
             }
         }
-    }
 
     @Unique
     private void handleCustomRainSound(Camera camera, BlockPos soundPos, boolean isMuffled) {
